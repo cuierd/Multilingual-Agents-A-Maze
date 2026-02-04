@@ -1,0 +1,45 @@
+name: maze
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python>=3.12.7
+  - pip
+
+  # core numeric / data
+  - numpy
+  - pandas
+
+  # pytorch + cuda (you already use pytorch-cuda=12.1)
+  - pytorch
+  - pytorch-cuda=12.1
+  - torchvision
+  - torchaudio
+
+  # utilities
+  - pyyaml
+  - tqdm
+  - regex
+
+  # optional but common
+  - ipython
+  - ipykernel
+
+  - pip:
+      - python-dotenv
+      - json-repair
+
+      # langchain stack (pin lightly or leave unpinned)
+      - langchain-core
+      - langchain-openai
+      - langchain-huggingface
+      - langsmith
+
+      # openai sdk
+      - openai
+
+      # HF stack (you are using it)
+      - transformers
+      - huggingface-hub
+      - accelerate

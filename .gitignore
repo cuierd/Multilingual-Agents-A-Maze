@@ -1,0 +1,82 @@
+# =========================
+# OS / Editors
+# =========================
+.DS_Store
+Thumbs.db
+
+.idea/
+.vscode/
+*.swp
+*.swo
+*.swn
+
+# =========================
+# Python
+# =========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+.venv/
+venv/
+env/
+
+*.egg-info/
+build/
+dist/
+
+# =========================
+# Node / Frontend
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =========================
+# Env files
+# =========================
+.env
+.env.local
+.env.*.local
+
+# =========================
+# ML / Experiments
+# =========================
+runs/
+logs/
+wandb/
+tensorboard/
+
+.cache/
+.huggingface/
+
+*.pt
+*.pth
+*.ckpt
+*.bin
+*.safetensors
+
+# =========================
+# Data / Outputs
+# =========================
+data/
+results/
+outputs/
+
+# =========================
+# Temporary / Junk
+# =========================
+*junk*/
+*temp*/
+
+junk/
+temp/
+test/
+results/
+
+# =========================
+# Misc
+# =========================
+*.log

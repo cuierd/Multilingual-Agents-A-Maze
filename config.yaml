@@ -1,0 +1,23 @@
+# Configuration file for the Multilingual Maze task
+## By default, use English as the language
+LANGUAGE: "Chinese"
+## By default, use EN as the language code
+LANGUAGE_CODE: "zh"
+## By default, use the English vocabulary file in data/lexicon/vocabulary_en.txt
+LEXICON_PATH: "/swdata/yin/Cui/LLM-MAZE/llmmaze/data/lexicon/lexicon_zh.txt"
+## Input data path --> 
+## Contains sentences of words to be processed.
+## By default, sentences are separated by newline, words are separated by whitespace.
+INPUT_DATA_PATH: "/swdata/yin/Cui/LLM-MAZE/llmmaze/data/input/zh/Ins_HumanRights_zh.txt"
+
+## Separator between words in a sentence, by default is whitespace. Can be set to other characters like comma, semicolon, etc.
+WORD_SEPARATOR: " "
+## By default, use common pre-defined punctuation list by language code. Can add custom punctuation list by passing a list of strings.
+PUNCTUATION: None
+## By default, generate grammatical distractor type. Other options: "lexical"
+DISTRACTOR_TYPE: "grammatical"
+## By default, use the LLM agent, other options: "chat"
+AGENT_TYPE: "llm"
+## if AGENT_TYPE is "llm", use the Qwen2.5-3B-Instruct model, you can pass other model id here;
+## if AGENT_TYPE is "chat", use the gpt-4o model, you can pass other model id here;
+MODEL_ID: "Qwen/Qwen2.5-3B-Instruct"
