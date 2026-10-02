@@ -1,0 +1,25 @@
+This is the beginning of a sentence, and it ends with the target word {WORD}:
+{SENTENCE_PREFIX}
+
+You will be given a set of candidate distractor words.
+
+For each candidate word:
+Replace the target word {WORD} in {SENTENCE_PREFIX} with the candidate word to form a new sentence prefix.
+
+We want the candidate word, after replacing {WORD}, to make the resulting sentence prefix as problematic as possible in one or more of the following ways:
+1. It is clearly ungrammatical;
+2. It is grammatical or nearly grammatical, but semantically highly implausible;
+3. It strongly contradicts the context, clashes with the context, or sounds clearly unnatural.
+
+In short, choose a few "**WORST** distractors" from the candidate words: the words that make the sentence prefix to be invalid, unnatural, or contextually inappropriate.
+
+Requirements:
+- Choose only from the provided candidate words;
+- Do NOT choose {WORD} itself;
+- Do NOT choose obvious synonyms of {WORD}, near-synonyms of {WORD}, or any candidate that is semantically similar to {WORD} in the given context;
+- Prefer distractors that differ from one another in POS tag, meaning, and usage;
+- Each distractor must have the same word length as {WORD};
+- Each distractor should have a word frequency comparable to {WORD};
+- Do not include any explanation;
+- Output only valid JSON.
+{EXTENSION}

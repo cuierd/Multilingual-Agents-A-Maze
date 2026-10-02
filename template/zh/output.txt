@@ -1,0 +1,26 @@
+请将输出格式化为严格合法的 JSON 对象。只输出 JSON 本身，不要包含任何解释、说明文字或 Markdown 代码块。
+
+输出格式如下：
+
+{
+  "source": "WORD_TO_BE_REPLACED",
+  "distractor1": "WORD_YOU_CHOOSE_1",
+  "distractor2": "WORD_YOU_CHOOSE_2",
+  "distractor3": "WORD_YOU_CHOOSE_3"
+}
+
+如果需要生成的干扰词数量不是 3 个，请保持相同格式，并按顺序增减 distractor 字段：
+- 生成 1 个干扰词时，输出 distractor1；
+- 生成 2 个干扰词时，输出 distractor1 和 distractor2；
+- 生成 4 个干扰词时，输出 distractor1、distractor2、distractor3、distractor4；
+- 依此类推。
+
+要求：
+- 必须包含 source 字段；
+- source 字段的值必须是原始目标词；
+- 必须包含且只包含所需数量的 distractor 字段；
+- distractor 字段必须从 distractor1 开始连续编号，不要跳号；
+- 每个 distractor 字段的值都必须是一个字符串；
+- JSON 末尾不要添加多余逗号；
+- 不要输出 Markdown 代码块；
+- 不要输出任何说明文字。

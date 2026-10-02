@@ -1,0 +1,26 @@
+Formatiere deine Ausgabe als streng gueltiges JSON-Objekt. Gib nur das JSON selbst aus, ohne Erklaerungen, Kommentare oder Markdown-Codebloecke.
+
+Das Ausgabeformat ist wie folgt:
+
+{
+  "source": "WORD_TO_BE_REPLACED",
+  "distractor1": "WORD_YOU_CHOOSE_1",
+  "distractor2": "WORD_YOU_CHOOSE_2",
+  "distractor3": "WORD_YOU_CHOOSE_3"
+}
+
+Wenn die erforderliche Anzahl an Distraktoren nicht 3 ist, behalte dasselbe Format bei und fuege Distraktorfelder der Reihenfolge nach hinzu oder entferne sie:
+- Wenn 1 Distraktor erzeugt werden soll, gib distractor1 aus;
+- Wenn 2 Distraktoren erzeugt werden sollen, gib distractor1 und distractor2 aus;
+- Wenn 4 Distraktoren erzeugt werden sollen, gib distractor1, distractor2, distractor3 und distractor4 aus;
+- Und so weiter.
+
+Anforderungen:
+- Das Feld source muss enthalten sein;
+- Der Wert von source muss das urspruengliche Zielwort sein;
+- Gib genau die erforderliche Anzahl an Distraktorfeldern aus und keine zusaetzlichen Distraktorfelder;
+- Die Distraktorfelder muessen fortlaufend ab distractor1 nummeriert sein, ohne ausgelassene Nummern;
+- Der Wert jedes Distraktorfelds muss ein String sein;
+- Setze kein abschliessendes Komma am Ende des JSON-Objekts;
+- Gib keinen Markdown-Codeblock aus;
+- Gib keinen erklaerenden Text aus.

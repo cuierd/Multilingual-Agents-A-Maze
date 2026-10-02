@@ -1,0 +1,1 @@
+Generate distractors for {WORD}. Return a list of {MAX_SIZE} candidate words:

@@ -1,0 +1,2 @@
+Select the distractor for the word {WORD} from the following candidates:
+{CANDIDATES}

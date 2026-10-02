@@ -61,7 +61,6 @@ tensorboard/
 # =========================
 # Data / Outputs
 # =========================
-data/
 results/
 outputs/
 
@@ -69,7 +68,6 @@ outputs/
 # Temporary / Junk
 # =========================
 *junk*/
-*temp*/
 
 junk/
 temp/

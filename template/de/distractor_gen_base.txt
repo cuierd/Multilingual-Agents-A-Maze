@@ -1,0 +1,21 @@
+Dies ist der Beginn eines Satzes, und er endet mit dem Zielwort {WORD}:
+{SENTENCE_PREFIX}
+
+Deine Aufgabe ist es, semantisch nicht verwandte Distraktorwoerter zu erzeugen, die das Zielwort {WORD} ersetzen koennen.
+
+Jeder Distraktor muss alle folgenden Anforderungen erfuellen:
+1. Er muss ein deutsches Wort sein, genau wie {WORD};
+2. Er muss die gleiche Laenge wie {WORD} haben;
+3. Seine Worthaeufigkeit sollte grob mit der von {WORD} vergleichbar sein;
+4. Er muss semantisch nicht mit {WORD} verwandt sein. Erzeuge keine Synonyme, nahe Synonyme oder Woerter, die im gegebenen Kontext semantisch aehnlich zu {WORD} sind;
+5. Er darf keine plausible Fortsetzung des linken Kontexts von {WORD} sein. Mit anderen Worten: Nach dem Ersetzen von {WORD} durch den Distraktor sollte der resultierende Satzpraefix klar ungueltig, unnatuerlich oder kontextuell unpassend sein.
+
+Versuchen Sie, eine andere Wortart als {WORD} zu verwenden.
+
+Bevorzuge Distraktoren, die eines oder mehrere der folgenden Probleme verursachen:
+1. Der resultierende Satzpraefix ist klar ungrammatisch;
+2. Der resultierende Satzpraefix ist grammatisch oder nahezu grammatisch, aber semantisch stark unplausibel;
+3. Der resultierende Satzpraefix widerspricht dem Kontext deutlich, ist stark inkonsistent mit dem Kontext oder klingt klar unnatuerlich.
+
+Fuege keine Erklaerungen hinzu. Gib nur das geforderte Ergebnis aus.
+{EXTENSION}

@@ -1,0 +1,21 @@
+This is the beginning of a sentence, and it ends with the target word {WORD}:
+{SENTENCE_PREFIX}
+
+Your task is to generate semantically unrelated distractor words to replace the target word {WORD}.
+
+Each distractor must satisfy all of the following requirements:
+1. It must be an English word, just like {WORD};
+2. It must have the same length as {WORD};
+3. Its word frequency should be roughly comparable to that of {WORD};
+4. It must be semantically unrelated to {WORD}. Do not generate synonyms, near-synonyms, or any word that is semantically similar to {WORD} in the given context;
+5. It must not be a reasonable continuation of the context to the left of {WORD}. In other words, after replacing {WORD} with the distractor, the resulting sentence prefix should be clearly invalid, unnatural, or contextually inappropriate.
+
+Try to choose distractors that have different part of speech from {WORD}.
+
+Prefer distractors that cause one or more of the following problems:
+1. The resulting sentence prefix is clearly ungrammatical;
+2. The resulting sentence prefix is grammatical or nearly grammatical, but semantically highly implausible;
+3. The resulting sentence prefix strongly contradicts the context, clashes with the context, or sounds clearly unnatural.
+
+Do not include any explanation. Output only the required result.
+{EXTENSION}

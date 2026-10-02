@@ -1,0 +1,26 @@
+Format your output as a strictly valid JSON object. Output only the JSON itself, with no explanations, comments, or Markdown code blocks.
+
+The output format is as follows:
+
+{
+  "source": "WORD_TO_BE_REPLACED",
+  "distractor1": "WORD_YOU_CHOOSE_1",
+  "distractor2": "WORD_YOU_CHOOSE_2",
+  "distractor3": "WORD_YOU_CHOOSE_3"
+}
+
+If the required number of distractors is not 3, keep the same format and add or remove distractor fields in order:
+- If generating 1 distractor, output distractor1;
+- If generating 2 distractors, output distractor1 and distractor2;
+- If generating 4 distractors, output distractor1, distractor2, distractor3, and distractor4;
+- And so on.
+
+Requirements:
+- The source field must be included;
+- The value of the source field must be the original target word;
+- Include exactly the required number of distractor fields, and no extra distractor fields;
+- The distractor fields must be numbered consecutively starting from distractor1, with no skipped numbers;
+- The value of each distractor field must be a string;
+- Do not add a trailing comma at the end of the JSON object;
+- Do not output a Markdown code block;
+- Do not output any explanatory text.

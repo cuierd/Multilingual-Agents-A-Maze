@@ -1,0 +1,1 @@
+Erzeuge Distraktoren fuer {WORD}. Gib eine Liste mit {MAX_SIZE} Kandidatenwoertern zurueck:

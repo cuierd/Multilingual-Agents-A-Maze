@@ -1,0 +1,25 @@
+Dies ist der Beginn eines Satzes, und er endet mit dem Zielwort {WORD}:
+{SENTENCE_PREFIX}
+
+Du bekommst eine Menge von Kandidatenwoertern fuer Distraktoren.
+
+Fuer jedes Kandidatenwort:
+Ersetze das Zielwort {WORD} in {SENTENCE_PREFIX} durch das Kandidatenwort, um einen neuen Satzpraefix zu bilden.
+
+Wir wollen, dass das Kandidatenwort nach dem Ersetzen von {WORD} den resultierenden Satzpraefix in einer oder mehreren der folgenden Weisen moeglichst problematisch macht:
+1. Er ist klar ungrammatisch;
+2. Er ist grammatisch oder fast grammatisch, aber semantisch sehr unplausibel;
+3. Er widerspricht dem Kontext deutlich, ist stark inkonsistent mit dem Kontext oder klingt klar unnatuerlich.
+
+Kurz gesagt: Waehle einige "**SCHLECHTESTE** Distraktoren" aus den Kandidatenwoertern aus: die Woerter, die den Satzpraefix ungueltig, unnatuerlich oder im Kontext unpassend machen.
+
+Anforderungen:
+- Waehle nur aus den bereitgestellten Kandidatenwoertern;
+- Waehle NICHT {WORD} selbst;
+- Waehle KEINE offensichtlichen Synonyme von {WORD}, keine nahen Synonyme von {WORD} und kein Kandidatenwort, das im gegebenen Kontext semantisch aehnlich zu {WORD} ist;
+- Bevorzuge Distraktoren, die sich in der Wortart, Bedeutung und Verwendung voneinander unterscheiden;
+- Jeder Distraktor muss dieselbe Wortlaenge wie {WORD} haben;
+- Jeder Distraktor sollte eine mit {WORD} vergleichbare Worthaeufigkeit haben;
+- Fuege keine Erklaerungen hinzu;
+- Gib nur gueltiges JSON aus.
+{EXTENSION}

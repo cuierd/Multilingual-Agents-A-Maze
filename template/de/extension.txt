@@ -1,0 +1,2 @@
+Waehle den Distraktor fuer das Wort {WORD} aus den folgenden Kandidaten:
+{CANDIDATES}
