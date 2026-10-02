@@ -1,0 +1,14 @@
+gradio>=6.14.0
+python-dotenv
+pyyaml
+pandas
+regex
+json-repair
+langchain-core
+langchain-openai
+langchain-huggingface
+openai
+transformers
+huggingface-hub<1.0
+accelerate
+torch

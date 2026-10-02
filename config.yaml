@@ -1,23 +1,73 @@
-# Configuration file for the Multilingual Maze task
-## By default, use English as the language
-LANGUAGE: "Chinese"
-## By default, use EN as the language code
-LANGUAGE_CODE: "zh"
-## By default, use the English vocabulary file in data/lexicon/vocabulary_en.txt
-LEXICON_PATH: "/swdata/yin/Cui/LLM-MAZE/llmmaze/data/lexicon/lexicon_zh.txt"
-## Input data path --> 
-## Contains sentences of words to be processed.
-## By default, sentences are separated by newline, words are separated by whitespace.
-INPUT_DATA_PATH: "/swdata/yin/Cui/LLM-MAZE/llmmaze/data/input/zh/Ins_HumanRights_zh.txt"
+# Unified configuration for LLM-Agent and Chat-Agent Maze distractor generation.
+# Change LANGUAGE_CODE (and optionally MODEL_ID) for most runs.
 
-## Separator between words in a sentence, by default is whitespace. Can be set to other characters like comma, semicolon, etc.
-WORD_SEPARATOR: " "
-## By default, use common pre-defined punctuation list by language code. Can add custom punctuation list by passing a list of strings.
-PUNCTUATION: None
-## By default, generate grammatical distractor type. Other options: "lexical"
-DISTRACTOR_TYPE: "grammatical"
-## By default, use the LLM agent, other options: "chat"
+# Processing Modes of Experiment:
+# - naturalistic_reading: plain sentence list. One sentence per line. One article per file.
+# - controlled_experiment: tabular (item_id, condition_id, sentence)
+PROCESSING_MODE: "naturalistic_reading"
+
+# Language of Experiment:
+# Use the two letter code, following the code in wordfreq. Check wordfreq or the lexicon_{language_code}.txt files in lexicon/ for the list of languages.
+LANGUAGE_CODE: "zh"
+
+# Agent and model defaults
+# Other options: "chat" (for api/chat_agent.py)
 AGENT_TYPE: "llm"
-## if AGENT_TYPE is "llm", use the Qwen2.5-3B-Instruct model, you can pass other model id here;
-## if AGENT_TYPE is "chat", use the gpt-4o model, you can pass other model id here;
-MODEL_ID: "Qwen/Qwen2.5-3B-Instruct"
+# Other options: e.g., "gpt-4o-mini" or other OpenAI models for api/chat_agent.py; "Qwen/Qwen2.5-3B-Instruct" or other Hugging Face models (for api/llm_agent.py)
+MODEL_ID: "Qwen/Qwen3-4B-Instruct-2507"
+
+# Optional explicit path overrides.
+# Leave empty to auto-resolve from LANGUAGE_CODE:
+# - LEXICON_PATH  -> data/lexicon/lexicon_{LANGUAGE_CODE}.txt
+# - INPUT_DATA_PATH (naturalistic) -> data/input/{LANGUAGE_CODE}/naturalistic_{LANGUAGE_CODE}.txt
+# - INPUT_DATA_PATH (controlled)   -> data/input/{LANGUAGE_CODE}/controlled_{LANGUAGE_CODE}.txt
+# - TEMPLATE_DIR -> template/{LANGUAGE_CODE}
+# - OUTPUT_PATH  -> results/{LANGUAGE_CODE}/{agent}_out_{lang}_{model}.json
+LEXICON_PATH: ""
+INPUT_DATA_PATH: ""
+TEMPLATE_DIR: ""
+OUTPUT_PATH: ""
+
+# Optional: leave blank to reuse MODEL_ID for that stage.
+# Proposal model is the model that proposes the candidate pools.
+# Selection model is the model that selects the final distractors.
+PROPOSAL_MODEL_ID: ""
+SELECTION_MODEL_ID: ""
+
+# -----------------------------------------------------------------------------
+# Candidate source (both api/llm_agent.py and api/chat_agent.py).
+# -----------------------------------------------------------------------------
+# When true: candidate pools MUST come from an existing LEXICON_PATH (or default lexicon file).
+# When false: Stage-A LM proposes distractors, then Stage-B selects.
+USE_LEXICON_CANDIDATES: true
+
+# Text parsing / generation controls.
+# - WORD_SEPARATOR: the separator between words. Must align with the separator in the input data.
+# - NUM_DISTRACTORS: the number of distractors to generate.
+# - NUM_WORKERS: the number of workers to use for parallel processing. 1 is the default, means no parallel processing.
+WORD_SEPARATOR: " "
+NUM_DISTRACTORS: 3
+NUM_WORKERS: 1
+
+# -----------------------------------------------------------------------------
+# Surprisal thresholds (optional post-filter on chosen distractors)
+# -----------------------------------------------------------------------------
+# Surprisal is OFF when ALL of the following hold:
+#   - SURPRISAL_MIN_ABS is null (omit minimum absolute surprisal per distractor)
+#   - SURPRISAL_MIN_DELTA is 0 (no extra gap required above the target word's surprisal)
+#   - SURPRISAL_ABSOLUTE_THRESHOLD_ONLY is false
+#
+# When ON, the pipeline loads a causal LM (same MODEL_ID by default) to score
+# distractors vs context; use SURPRISAL_DEVICE to pin that scorer (e.g. "cuda",
+# "cuda:1", "cpu"). Leave null to auto-pick cuda if available else cpu.
+#
+# - SURPRISAL_MIN_ABS (float or null): minimum surprisal (bits) each distractor must reach. null disables this leg.
+# - SURPRISAL_MIN_DELTA (float): extra bits required above the target word's surprisal: distractor must be at least target_surprisal + MIN_DELTA (unless absolute-only mode). 0 ignores this rule.
+#
+# - SURPRISAL_ABSOLUTE_THRESHOLD_ONLY (true/false): if true, only SURPRISAL_MIN_ABS is enforced as a hard floor (MIN_DELTA ignored).
+#
+# CLI note: flags like --min-abs and --min-delta override these when provided. Omitting a CLI flag does not clear a value already set here (None is not merged).
+SURPRISAL_MIN_ABS: null
+SURPRISAL_MIN_DELTA: 0.0
+SURPRISAL_ABSOLUTE_THRESHOLD_ONLY: false
+SURPRISAL_DEVICE: null

@@ -230,6 +230,24 @@ class DistractorGeneratorPrompt(BaseChatPrompt):
             FORMAT_INSTRUCTIONS=self.parser.get_format_instructions(),
         )
 
+    def render_text(
+        self,
+        sentence_prefix: str,
+        word: str,
+    ) -> str:
+        """Flatten chat messages into a single string prompt (for HF text-generation)."""
+        msgs = self.render_messages(sentence_prefix, word)
+        system = ""
+        user = ""
+        for m in msgs:
+            if m.type == "system":
+                system = m.content.strip()
+            elif m.type == "human":
+                user = m.content.strip()
+        if system:
+            return system + "\n\n" + user
+        return user
+
 
 # ======================================================
 # Stage B: Maze Chat Prompt (Stage A + Stage B)
@@ -308,7 +326,7 @@ def main():
     print("Configs:", configs)
 
     language_code = configs["LANGUAGE_CODE"]
-    template_dir = Path(f"/swdata/yin/Cui/LLM-MAZE/llmmaze/template/{language_code}")
+    template_dir = Path(f"/home/cding/projects/Agentic-Maze/template/{language_code}")
     print("Template path:", template_dir)
 
     # -------------------------
@@ -327,8 +345,8 @@ def main():
     # Prompt objects
     # -------------------------
     gen_prompt = DistractorGeneratorPrompt(
-        path_to_user_template=template_dir / "chat_distractor_gen_base.txt",
-        path_to_extension_template=template_dir / "chat_distractor_gen_extension.txt",
+        path_to_user_template=template_dir / "distractor_gen_base.txt",
+        path_to_extension_template=template_dir / "distractor_gen_extension.txt",
         path_to_system_template=template_dir / "system.txt",
     )
 

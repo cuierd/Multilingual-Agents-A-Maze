@@ -38,8 +38,9 @@ dependencies:
 
       # openai sdk
       - openai
+      - gradio
 
       # HF stack (you are using it)
       - transformers
-      - huggingface-hub
+      - huggingface-hub<1.0
       - accelerate
